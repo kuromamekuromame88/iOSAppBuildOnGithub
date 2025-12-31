@@ -39,18 +39,18 @@ jobs:
       - name: Build archive
         run: |
           xcodebuild archive \
-            -project SimpleTodo/SimpleTodo.xcodeproj \
-            -scheme SimpleTodo \
+            -project SimpleToDo/SimpleTodo.xcodeproj \
+            -scheme SimpleToDo \
             -configuration Release \
             -sdk iphoneos \
-            -archivePath build/SimpleTodo.xcarchive \
+            -archivePath build/SimpleToDo.xcarchive \
             CODE_SIGNING_ALLOWED=NO
 
       - name: Export IPA
         run: |
           mkdir -p build/ipa
           xcodebuild -exportArchive \
-            -archivePath build/SimpleTodo.xcarchive \
+            -archivePath build/SimpleToDo.xcarchive \
             -exportOptionsPlist ExportOptions.plist \
             -exportPath build/ipa \
             CODE_SIGNING_ALLOWED=NO
@@ -58,5 +58,5 @@ jobs:
       - name: Upload IPA
         uses: actions/upload-artifact@v4
         with:
-          name: SimpleTodo-ipa
+          name: SimpleToDo-ipa
           path: build/ipa/*.ipa
