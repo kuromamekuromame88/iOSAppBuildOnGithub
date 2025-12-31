@@ -64,3 +64,14 @@ struct ToDoItem: Codable, Identifiable, Hashable {
         }
     }
 }
+
+//追加したコード
+extension ToDoItem {
+    static let example = ToDoItem(
+        id: UUID(),
+        title: "Example ToDo",
+        isCompleted: false,
+        createdAt: Date()
+    )
+}
+
