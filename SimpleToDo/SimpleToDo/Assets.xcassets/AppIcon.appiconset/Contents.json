@@ -9,7 +9,7 @@
     {
       "filename" : "T-icon20.png",
       "idiom" : "iphone",
-      "scale" : "3x",
+      "scale" : "1x",
       "size" : "20x20"
     },
     {
@@ -21,7 +21,7 @@
     {
       "filename" : "T-icon29.png",
       "idiom" : "iphone",
-      "scale" : "3x",
+      "scale" : "1x",
       "size" : "29x29"
     },
     {
@@ -33,7 +33,7 @@
     {
       "filename" : "T-icon40.png",
       "idiom" : "iphone",
-      "scale" : "3x",
+      "scale" : "1x",
       "size" : "40x40"
     },
     {
