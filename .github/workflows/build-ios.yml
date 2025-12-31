@@ -16,6 +16,26 @@ jobs:
       - name: Show Xcode version
         run: xcodebuild -version
 
+      - name: Create ExportOptions.plist
+        run: |
+          cat <<EOF > ExportOptions.plist
+          <?xml version="1.0" encoding="UTF-8"?>
+          <!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN"
+           "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+          <plist version="1.0">
+          <dict>
+            <key>method</key>
+            <string>development</string>
+            <key>signingStyle</key>
+            <string>manual</string>
+            <key>stripSwiftSymbols</key>
+            <true/>
+            <key>compileBitcode</key>
+            <false/>
+          </dict>
+          </plist>
+          EOF
+
       - name: Build archive
         run: |
           xcodebuild archive \
@@ -32,7 +52,8 @@ jobs:
           xcodebuild -exportArchive \
             -archivePath build/SimpleTodo.xcarchive \
             -exportOptionsPlist ExportOptions.plist \
-            -exportPath build/ipa
+            -exportPath build/ipa \
+            CODE_SIGNING_ALLOWED=NO
 
       - name: Upload IPA
         uses: actions/upload-artifact@v4
