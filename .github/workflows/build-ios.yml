@@ -1,62 +1,43 @@
-name: Build iOS IPA
+name: iOS Archive
 
 on:
   push:
-    branches: [ "main" ]
+    branches: [ main ]
   workflow_dispatch:
 
 jobs:
-  build-ios:
+  archive:
     runs-on: macos-latest
 
     steps:
       - name: Checkout
         uses: actions/checkout@v4
 
+      - name: Select Xcode
+        run: sudo xcode-select -s /Applications/Xcode.app
+
       - name: Show Xcode version
         run: xcodebuild -version
 
-      - name: Create ExportOptions.plist
+      - name: Clean
         run: |
-          cat <<EOF > ExportOptions.plist
-          <?xml version="1.0" encoding="UTF-8"?>
-          <!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN"
-           "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
-          <plist version="1.0">
-          <dict>
-            <key>method</key>
-            <string>development</string>
-            <key>signingStyle</key>
-            <string>manual</string>
-            <key>stripSwiftSymbols</key>
-            <true/>
-            <key>compileBitcode</key>
-            <false/>
-          </dict>
-          </plist>
-          EOF
+          xcodebuild clean \
+            -project SimpleToDo.xcodeproj \
+            -scheme SimpleToDo \
+            -configuration Release
 
-      - name: Build archive
+      - name: Archive
         run: |
+          mkdir -p build
           xcodebuild archive \
-            -project SimpleToDo/SimpleTodo.xcodeproj \
+            -project SimpleToDo.xcodeproj \
             -scheme SimpleToDo \
             -configuration Release \
-            -sdk iphoneos \
             -archivePath build/SimpleToDo.xcarchive \
             CODE_SIGNING_ALLOWED=NO
 
-      - name: Export IPA
-        run: |
-          mkdir -p build/ipa
-          xcodebuild -exportArchive \
-            -archivePath build/SimpleToDo.xcarchive \
-            -exportOptionsPlist ExportOptions.plist \
-            -exportPath build/ipa \
-            CODE_SIGNING_ALLOWED=NO
-
-      - name: Upload IPA
+      - name: Upload Archive
         uses: actions/upload-artifact@v4
         with:
-          name: SimpleToDo-ipa
-          path: build/ipa/*.ipa
+          name: SimpleToDo-xcarchive
+          path: build/SimpleToDo.xcarchive
