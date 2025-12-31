@@ -31,6 +31,7 @@ jobs:
             -configuration Release \
             -sdk iphoneos \
             -archivePath build/SimpleToDo.xcarchive \
+            INFOPLIST_FILE=SimpleToDo/Info.plist \
             CODE_SIGNING_ALLOWED=NO \
             CODE_SIGNING_REQUIRED=NO \
             CODE_SIGN_IDENTITY=""
