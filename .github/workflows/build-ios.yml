@@ -13,6 +13,9 @@ jobs:
       - name: Checkout
         uses: actions/checkout@v4
 
+      - name: Show directory structure (debug)
+        run: ls -R
+
       - name: Select Xcode
         run: sudo xcode-select -s /Applications/Xcode.app
 
@@ -22,7 +25,7 @@ jobs:
       - name: Clean
         run: |
           xcodebuild clean \
-            -project SimpleToDo.xcodeproj \
+            -project SimpleToDo/SimpleToDo.xcodeproj \
             -scheme SimpleToDo \
             -configuration Release
 
@@ -30,7 +33,7 @@ jobs:
         run: |
           mkdir -p build
           xcodebuild archive \
-            -project SimpleToDo.xcodeproj \
+            -project SimpleToDo/SimpleToDo.xcodeproj \
             -scheme SimpleToDo \
             -configuration Release \
             -archivePath build/SimpleToDo.xcarchive \
