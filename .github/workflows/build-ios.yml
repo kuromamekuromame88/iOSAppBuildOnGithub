@@ -19,23 +19,23 @@ jobs:
       - name: Build archive
         run: |
           xcodebuild archive \
-            -project SimpleNotes/SimpleNotes.xcodeproj \
-            -scheme SimpleNotes \
+            -project SimpleTodo/SimpleTodo.xcodeproj \
+            -scheme SimpleTodo \
             -configuration Release \
             -sdk iphoneos \
-            -archivePath build/SimpleNotes.xcarchive \
+            -archivePath build/SimpleTodo.xcarchive \
             CODE_SIGNING_ALLOWED=NO
 
       - name: Export IPA
         run: |
           mkdir -p build/ipa
           xcodebuild -exportArchive \
-            -archivePath build/SimpleNotes.xcarchive \
+            -archivePath build/SimpleTodo.xcarchive \
             -exportOptionsPlist ExportOptions.plist \
             -exportPath build/ipa
 
       - name: Upload IPA
         uses: actions/upload-artifact@v4
         with:
-          name: SimpleNotes-ipa
+          name: SimpleTodo-ipa
           path: build/ipa/*.ipa
