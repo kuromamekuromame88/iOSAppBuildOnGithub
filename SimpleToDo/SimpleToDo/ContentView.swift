@@ -5,7 +5,6 @@ import SwiftUI
 // =======================
 struct ContentView: View {
 
-    // タブ管理
     @State private var selectedTab: AppTab = .chat
 
     var body: some View {
@@ -26,7 +25,6 @@ struct ContentView: View {
     }
 }
 
-
 // =======================
 // タブ定義
 // =======================
@@ -36,34 +34,27 @@ enum AppTab {
 }
 
 // =======================
-// Chat
+// Chat（仮実装）
 // =======================
 struct ChatView: View {
-    @StateObject private var vm = ChatViewModel()
-
     var body: some View {
-        VStack {
-            MessageList(messages: vm.messages)
-            MessageInput(onSend: vm.send)
+        VStack(spacing: 16) {
+            Image(systemName: "message.fill")
+                .font(.system(size: 60))
+            Text("Chat (Coming Soon)")
         }
     }
 }
 
 // =======================
-// Voice / Video
+// Voice / Video（仮実装）
 // =======================
 struct VoiceView: View {
     var body: some View {
-        VStack(spacing: 20) {
+        VStack(spacing: 16) {
             Image(systemName: "video.fill")
-                .font(.system(size: 80))
-
-            Text("Voice / Video Call")
-                .font(.title)
-
-            Button("Start Call") {
-                // 通話開始処理
-            }
+                .font(.system(size: 60))
+            Text("Voice / Video (Coming Soon)")
         }
     }
 }
@@ -73,6 +64,6 @@ struct VoiceView: View {
 // =======================
 struct ContentView_Previews: PreviewProvider {
     static var previews: some View {
-        ContentView(model: ViewModel())
+        ContentView()
     }
 }
