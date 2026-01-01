@@ -1,15 +1,33 @@
 name: SimpleToDo
-
 options:
-  bundleIdPrefix: com.example
+  bundleIdPrefix: com.hackingwithswift
+  deploymentTarget:
+    iOS: '15.0'
+configs:
+  Debug:
+    buildSettings:
+      SWIFT_OPTIMIZATION_LEVEL: '-Onone'
+      ENABLE_PREVIEWS: YES
+  Release:
+    buildSettings:
+      SWIFT_OPTIMIZATION_LEVEL: '-O'
+      ENABLE_PREVIEWS: NO
 
 targets:
   SimpleToDo:
     type: application
     platform: iOS
-    deploymentTarget: "15.0"
+    deploymentTarget: '15.0'
     sources:
       - path: SimpleToDo
+        exclude:
+          - "Preview Content/**"
+    resources:
+      - SimpleToDo/Assets.xcassets
     settings:
-      base:
-        INFOPLIST_FILE: SimpleToDo/Info.plist
+      INFO_PLIST_FILE: SimpleToDo/Info.plist
+      CODE_SIGNING_ALLOWED: NO
+      CODE_SIGNING_REQUIRED: NO
+      CODE_SIGN_IDENTITY: ""
+      PRODUCT_BUNDLE_IDENTIFIER: com.hackingwithswift.SimpleToDo
+      SWIFT_VERSION: 5.0
