@@ -46,10 +46,10 @@ jobs:
             -sdk iphoneos \
             -archivePath build/SimpleToDo.xcarchive \
             INFOPLIST_FILE=SimpleToDo/Info.plist \
+            GENERATE_INFOPLIST_FILE=NO \
             CODE_SIGNING_ALLOWED=NO \
             CODE_SIGNING_REQUIRED=NO \
             CODE_SIGN_IDENTITY="" \
-            GENERATE_INFOPLIST_FILE: NO
 
       # 7️⃣ 未署名IPA生成
       - name: Create unsigned IPA
