@@ -6,27 +6,23 @@ struct SimpleToDoApp: App {
     @StateObject private var model = ViewModel()
     @State private var showSplash = true
 
-    @Environment(\.scenePhase) var scenePhase
+    @Environment(\.scenePhase) private var scenePhase
 
     var body: some Scene {
         WindowGroup {
-            NavigationView {
-                ZStack {
+            if showSplash {
+                SplashView()
+                    .onAppear {
+                        DispatchQueue.main.asyncAfter(deadline: .now() + 1.6) {
+                            withAnimation(.easeInOut(duration: 0.3)) {
+                                showSplash = false
+                            }
+                        }
+                    }
+            } else {
+                NavigationView {
                     ContentView(model: model)
-
-                    if showSplash {
-                        SplashView()
-                            .zIndex(1)
-                    }
-                }
-
-                SelectSomethingView()
-            }
-            .onAppear {
-                DispatchQueue.main.asyncAfter(deadline: .now() + 1.6) {
-                    withAnimation(.easeOut(duration: 0.3)) {
-                        showSplash = false
-                    }
+                    SelectSomethingView()
                 }
             }
         }
@@ -37,6 +33,7 @@ struct SimpleToDoApp: App {
         }
     }
 }
+
 
 
 
