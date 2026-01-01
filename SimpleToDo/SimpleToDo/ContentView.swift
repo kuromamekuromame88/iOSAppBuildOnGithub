@@ -1,71 +1,76 @@
-//
-// ContentView.swift
-// SimpleToDo
-//
-// Copyright © 2022 Paul Hudson.
-// Licensed under MIT license.
-//
-// https://github.com/twostraws/simple-swiftui
-// See LICENSE for license information
-//
-
 import SwiftUI
 
-/// The main listing view for the app, showing all to do items for the user to select from.
+// =======================
+// アプリの初期画面（ルート）
+// =======================
 struct ContentView: View {
-    /// The shared view model.
-    @ObservedObject var model: ViewModel
 
-    /// All the items that are currently selected in the list.
-    @State private var selectedItems = Set<ToDoItem>()
-
-    /// Whether editing is currently active or not. We use this rather than the
-    /// Environment edit mode because it creates simpler code.
-    @State private var editMode = EditMode.inactive
+    // タブ管理
+    @State private var selectedTab: AppTab = .chat
 
     var body: some View {
-        List(selection: $selectedItems) {
-            ForEach($model.items, content: ItemRow.init)
-                .onDelete(perform: model.delete)
-        }
-        .navigationTitle("SimpleToDo")
-        .toolbar {
-            ToolbarItem(placement: .navigationBarLeading) {
-                EditButton()
-                    .disabled(model.items.isEmpty)
-            }
+        TabView(selection: $selectedTab) {
 
-            ToolbarItem(placement: .navigationBarTrailing) {
-                Button(action: model.add) {
-                    Label("Add Item", systemImage: "plus")
+            ChatView()
+                .tabItem {
+                    Label("Chat", systemImage: "message")
                 }
-            }
+                .tag(AppTab.chat)
 
-            /// When we're in editing mode we add a toolbar button to let the user
-            /// delete all selected items at once.
-            ToolbarItem(placement: .bottomBar) {
-                if editMode == .active {
-                    HStack {
-                        Spacer()
-
-                        Button(role: .destructive) {
-                            model.delete(selectedItems)
-                            selectedItems.removeAll()
-                            editMode = .inactive
-                        } label: {
-                            Label("Delete selected", systemImage: "trash")
-                        }
-                        .disabled(selectedItems.isEmpty)
-                    }
+            VoiceView()
+                .tabItem {
+                    Label("Voice", systemImage: "phone")
                 }
-            }
+                .tag(AppTab.voice)
         }
-        .animation(.default, value: model.items)
-        .listStyle(.sidebar)
-        .environment(\.editMode, $editMode)
     }
 }
 
+
+// =======================
+// タブ定義
+// =======================
+enum AppTab {
+    case chat
+    case voice
+}
+
+// =======================
+// Chat
+// =======================
+struct ChatView: View {
+    @StateObject private var vm = ChatViewModel()
+
+    var body: some View {
+        VStack {
+            MessageList(messages: vm.messages)
+            MessageInput(onSend: vm.send)
+        }
+    }
+}
+
+// =======================
+// Voice / Video
+// =======================
+struct VoiceView: View {
+    var body: some View {
+        VStack(spacing: 20) {
+            Image(systemName: "video.fill")
+                .font(.system(size: 80))
+
+            Text("Voice / Video Call")
+                .font(.title)
+
+            Button("Start Call") {
+                // 通話開始処理
+            }
+        }
+    }
+}
+
+// =======================
+// Preview
+// =======================
 struct ContentView_Previews: PreviewProvider {
     static var previews: some View {
         ContentView(model: ViewModel())
