@@ -3,7 +3,6 @@ import SwiftUI
 @main
 struct SimpleToDoApp: App {
 
-    //@StateObject private var model = ViewModel()
     @State private var showSplash = true
 
     @Environment(\.scenePhase) private var scenePhase
@@ -22,15 +21,9 @@ struct SimpleToDoApp: App {
             } else {
                 NavigationView {
                     ContentView()
-                    //SelectSomethingView()
                 }
             }
         }
-        /*.onChange(of: scenePhase) { phase in
-            if phase == .background {
-                model.save()
-            }
-        }*/
     }
 }
 

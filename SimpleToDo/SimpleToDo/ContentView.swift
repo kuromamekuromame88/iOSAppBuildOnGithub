@@ -12,15 +12,21 @@ struct ContentView: View {
 
             ChatView()
                 .tabItem {
-                    Label("Chat", systemImage: "message")
+                    Label("Chat", systemImage: "message.fill")
                 }
                 .tag(AppTab.chat)
 
             VoiceView()
                 .tabItem {
-                    Label("Voice", systemImage: "phone")
+                    Label("Voice", systemImage: "phone.fill")
                 }
                 .tag(AppTab.voice)
+
+            VideoView()
+                .tabItem {
+                    Label("Video", systemImage: "play.rectangle.fill")
+                }
+                .tag(AppTab.video)
         }
     }
 }
@@ -28,9 +34,10 @@ struct ContentView: View {
 // =======================
 // タブ定義
 // =======================
-enum AppTab {
+enum AppTab: Hashable {
     case chat
     case voice
+    case video
 }
 
 // =======================
@@ -47,14 +54,29 @@ struct ChatView: View {
 }
 
 // =======================
-// Voice / Video（仮実装）
+// Voice / Call（仮実装）
 // =======================
 struct VoiceView: View {
     var body: some View {
         VStack(spacing: 16) {
-            Image(systemName: "video.fill")
+            Image(systemName: "phone.fill")
                 .font(.system(size: 60))
-            Text("Voice / Video (Coming Soon)")
+            Text("Voice / Call (Coming Soon)")
+        }
+    }
+}
+
+// =======================
+// Video Player（仮実装）
+// =======================
+struct VideoView: View {
+    var body: some View {
+        VStack(spacing: 16) {
+            Image(systemName: "play.rectangle.fill")
+                .font(.system(size: 60))
+            Text("YouTube / Video Player")
+            Text("Coming Soon")
+                .foregroundColor(.secondary)
         }
     }
 }
