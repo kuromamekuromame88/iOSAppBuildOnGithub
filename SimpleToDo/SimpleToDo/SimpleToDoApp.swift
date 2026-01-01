@@ -21,16 +21,16 @@ struct SimpleToDoApp: App {
                     }
             } else {
                 NavigationView {
-                    ContentView(model: model)
-                    SelectSomethingView()
+                    ContentView()
+                    //SelectSomethingView()
                 }
             }
         }
-        .onChange(of: scenePhase) { phase in
+        /*.onChange(of: scenePhase) { phase in
             if phase == .background {
                 model.save()
             }
-        }
+        }*/
     }
 }
 
