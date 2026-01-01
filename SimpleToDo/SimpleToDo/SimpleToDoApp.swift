@@ -3,26 +3,33 @@ import SwiftUI
 @main
 struct SimpleToDoApp: App {
 
-    @State private var showSplash = true
     @StateObject private var model = ViewModel()
+    @State private var showSplash = true
 
     var body: some Scene {
         WindowGroup {
-            if showSplash {
-                SplashView()
-                    .onAppear {
-                        DispatchQueue.main.asyncAfter(deadline: .now() + 1.6) {
-                            withAnimation {
-                                showSplash = false
-                            }
-                        }
-                    }
-            } else {
+            ZStack {
+                // 常に表示される本体
                 ContentView(model: model)
+
+                // 起動時のみ被せる Splash
+                if showSplash {
+                    SplashView()
+                        .transition(.opacity)
+                        .zIndex(1)
+                }
+            }
+            .onAppear {
+                DispatchQueue.main.asyncAfter(deadline: .now() + 1.6) {
+                    withAnimation(.easeInOut(duration: 0.5)) {
+                        showSplash = false
+                    }
+                }
             }
         }
     }
 }
+
 
 // MARK: - SplashView
 
