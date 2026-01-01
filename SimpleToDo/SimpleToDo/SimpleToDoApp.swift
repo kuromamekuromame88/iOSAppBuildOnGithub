@@ -45,21 +45,21 @@ struct SplashView: View {
                 .ignoresSafeArea()
 
             Text("T")
-                .font(.system(size: 120, weight: .bold))
+                .font(.system(size: 200, weight: .bold))
                 .foregroundColor(textColor)
                 .scaleEffect(scale)
                 .opacity(opacity)
         }
         .onAppear {
             // 拡大 + フェードイン
-            withAnimation(.easeOut(duration: 0.8)) {
+            withAnimation(.easeOut(duration: 0.5)) {
                 scale = 1.2
                 opacity = 1.0
             }
 
             // 縮小 + フェードアウト
             DispatchQueue.main.asyncAfter(deadline: .now() + 0.9) {
-                withAnimation(.easeIn(duration: 0.6)) {
+                withAnimation(.easeIn(duration: 0.5)) {
                     scale = 0.8
                     opacity = 0.0
                 }

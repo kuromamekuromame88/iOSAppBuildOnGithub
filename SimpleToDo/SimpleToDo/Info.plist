@@ -5,10 +5,10 @@
 <dict>
 
     <key>CFBundleDisplayName</key>
-    <string>たいせいのToDo</string>
+    <string>MyAPP</string>
 
     <key>CFBundleIdentifier</key>
-    <string>jp.taisei.simpletodo</string>
+    <string>jp.taisei.MyAPP</string>
 
     <key>UILaunchScreen</key>
     <dict/>
