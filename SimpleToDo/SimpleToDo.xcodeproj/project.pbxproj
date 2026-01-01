@@ -1,4 +1,9 @@
 // !$*UTF8*$!
+/*
+	PBXBuildFile - ビルド対象のファイルの登録
+	PBXFileReference - ファイルの実体
+	PBXGroup - フォルダ（ファイルの集まり）
+*/
 {
 	archiveVersion = 1;
 	classes = {
@@ -18,6 +23,21 @@
 		510F433B281D9C0C0060A05A /* DetailView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 510F433A281D9C0C0060A05A /* DetailView.swift */; };
 		510F433D281D9D560060A05A /* ItemRow.swift in Sources */ = {isa = PBXBuildFile; fileRef = 510F433C281D9D560060A05A /* ItemRow.swift */; };
 		AD975CDF28253BE00042EAE4 /* ToDoItem+Preview.swift in Sources */ = {isa = PBXBuildFile; fileRef = AD975CDE28253BE00042EAE4 /* ToDoItem+Preview.swift */; };
+
+		ABCDEF12345601010A000000 /*ChatView.swift in Sources*/ = {
+			isa = PBXBuildFile;
+			fileRef = ABCDEF12345601010B000000 /* ChatView.swift */;
+		};
+
+		ABCDEF12345602010A000000 /*VideoView.swift in Sources*/ = {
+			isa = PBXBuildFile;
+			fileRef = ABCDEF12345602010B000000 /* VideoView.swift */;
+		};
+
+		ABCDEF12345603010A000000 /*VoiceView.swift in Sources*/ = {
+			isa = PBXBuildFile;
+			fileRef = ABCDEF12345603010B000000 /* VoiceView.swift */;
+		};
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -33,6 +53,27 @@
 		510F433A281D9C0C0060A05A /* DetailView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DetailView.swift; sourceTree = "<group>"; };
 		510F433C281D9D560060A05A /* ItemRow.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ItemRow.swift; sourceTree = "<group>"; };
 		AD975CDE28253BE00042EAE4 /* ToDoItem+Preview.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "ToDoItem+Preview.swift"; sourceTree = "<group>"; };
+
+		ABCDEF12345601010B000000 /*ChatView.swift*/ = {
+			isa = PBXFileReference;
+			lastKnownFileType = sourcecode.swift;
+			path = ChatView.swift;
+			sourceTree = "<group>";
+		};
+
+		ABCDEF12345602010B000000 /*VideoView.swift*/ = {
+			isa = PBXFileReference;
+			lastKnownFileType = sourcecode.swift;
+			path = VideoView.swift;
+			sourceTree = "<group>";
+		};
+
+		ABCDEF12345603010B000000 /*VoiceView.swift*/ = {
+			isa = PBXFileReference;
+			lastKnownFileType = sourcecode.swift;
+			path = VoiceView.swift;
+			sourceTree = "<group>";
+		};
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -74,7 +115,9 @@
 				510F4336281D97620060A05A /* ViewModel.swift */,
 				510F4334281D97090060A05A /* FileManager-DocumentsDirectory.swift */,
 				510F4328281D95BC0060A05A /* Assets.xcassets */,
-				510F432A281D95BC0060A05A /* Preview Content */,
+				510F432A281D95BC0060A05A /* Preview Contentフォルダ*/,
+
+				ABCDEF123456000000000000 /*AppTabsフォルダ*/,
 			);
 			path = SimpleToDo;
 			sourceTree = "<group>";
@@ -87,6 +130,45 @@
 			);
 			path = "Preview Content";
 			sourceTree = "<group>";
+		};
+
+		ABCDEF123456000000000000 /*AppTabsフォルダ*/ = {
+			isa = PBXGroup;
+			children = (
+				/*内容物*/
+				ABCDEF123456010000000000 /*Chatフォルダ*/,
+				ABCDEF123456020000000000 /*Videoフォルダ*/,
+				ABCDEF123456030000000000 /*Voiceフォルダ*/,
+			);
+			path = "AppTabs";
+			sourceTree = "<group>";
+		};
+
+		ABCDEF123456010000000000 /*Chatフォルダ*/ = {
+			isa = PBXGroup;
+			children = (
+				ABCDEF12345601010B000000 /*ChatView.swift*/,
+			);
+			path = "Chat";
+			sourceTree = "<group>"
+		};
+
+		ABCDEF123456020000000000 /*Videoフォルダ*/ = {
+			isa = PBXGroup;
+			children = (
+				ABCDEF12345602010B000000 /*VideoView.swift*/,
+			);
+			path = "Video";
+			sourceTree = "<group>"
+		};
+
+		ABCDEF123456030000000000 /*Voiceフォルダ*/ = {
+			isa = PBXGroup;
+			children = (
+				ABCDEF12345603010B000000 /*VoiceView.swift*/,
+			);
+			path = "Voice";
+			sourceTree = "<group>"
 		};
 /* End PBXGroup section */
 
@@ -189,6 +271,10 @@
 				510F4333281D95EA0060A05A /* ToDoItem.swift in Sources */,
 				510F433D281D9D560060A05A /* ItemRow.swift in Sources */,
 				AD975CDF28253BE00042EAE4 /* ToDoItem+Preview.swift in Sources */,
+
+				ABCDEF12345601010A000000 /*ChatView.swift in Sources*/,
+				ABCDEF12345602010A000000 /*VideoView.swift in Sources*/,
+				ABCDEF12345603010A000000 /*VoiceView.swift in Sources*/,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
