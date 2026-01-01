@@ -9,15 +9,14 @@ struct SimpleToDoApp: App {
     var body: some Scene {
         WindowGroup {
             ZStack {
-                // 常に表示される本体
+                // 本体（最初から存在）
                 ContentView(model: model)
 
-                // 起動時のみ被せる Splash
-                if showSplash {
-                    SplashView()
-                        .transition(.opacity)
-                        .zIndex(1)
-                }
+                // Splash（透明化してから完全に無効化）
+                SplashView()
+                    .opacity(showSplash ? 1 : 0)
+                    .allowsHitTesting(showSplash)
+                    .zIndex(1)
             }
             .onAppear {
                 DispatchQueue.main.asyncAfter(deadline: .now() + 1.6) {
@@ -29,6 +28,7 @@ struct SimpleToDoApp: App {
         }
     }
 }
+
 
 
 // MARK: - SplashView
