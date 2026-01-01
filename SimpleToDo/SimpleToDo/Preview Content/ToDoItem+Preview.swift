@@ -1,3 +1,4 @@
+#if false
 // Copyright © 2022 Paul Hudson.
 // Licensed under MIT license.
 //
@@ -13,3 +14,4 @@ extension ToDoItem {
     static let PreviewExample = ToDoItem()
     //eampleから変更
 }
+#endif
