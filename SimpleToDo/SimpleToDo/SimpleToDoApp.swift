@@ -4,6 +4,7 @@ import SwiftUI
 struct SimpleToDoApp: App {
 
     @State private var showSplash = true
+    @StateObject private var model = ViewModel()
 
     var body: some Scene {
         WindowGroup {
@@ -17,7 +18,7 @@ struct SimpleToDoApp: App {
                         }
                     }
             } else {
-                ContentView()
+                ContentView(model: model)
             }
         }
     }
