@@ -11,6 +11,7 @@
     </a>
 </p>
 
+**このリポジトリは原作のフォークとして作られていますが、アプリの内容は改造を続けた結果、原作とはかけ離れています。**
 Simple SwiftUI is a small but growing collection of projects designed to provide small sample projects for SwiftUI learners to read, learn from, modify, and even use as a basis for their projects in the future.
 
 

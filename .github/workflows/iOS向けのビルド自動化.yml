@@ -1,4 +1,5 @@
-name: IOS向けの未署名IPAファイルの生成
+name: IOS向けの未署名IPAファイルの生成（XcodeGen使用・生成したIPAはインストール時にアプリをクラッシュさせます（何らかのエラーが出ているので、ディレクトリの構成がおかしいかもしれない））
+
 on:
   push:
     branches: [ "main" ]
@@ -9,20 +10,34 @@ jobs:
     runs-on: macos-latest
 
     steps:
+      # 1️⃣ コードチェックアウト
       - name: Checkout
         uses: actions/checkout@v4
 
-      - name: Xcodeのversion確認
+      # 2️⃣ Xcode バージョン確認
+      - name: Show Xcode version
         run: xcodebuild -version
 
-      - name: 初期化
+      # 3️⃣ XcodeGen をインストール
+      - name: Install XcodeGen
+        run: |
+          brew install xcodegen
+
+      # 4️⃣ XcodeGen でプロジェクト生成
+      - name: Generate Xcode Project
+        run: |
+          xcodegen generate --spec SimpleToDo/project.yml --quiet
+
+      # 5️⃣ クリーンビルド
+      - name: Clean
         run: |
           xcodebuild clean \
             -project SimpleToDo/SimpleToDo.xcodeproj \
             -scheme SimpleToDo \
             -configuration Release
 
-      - name: アーカイブ（署名なし）
+      # 6️⃣ アーカイブ作成（未署名）
+      - name: Build archive (no signing)
         run: |
           xcodebuild archive \
             -project SimpleToDo/SimpleToDo.xcodeproj \
@@ -35,7 +50,8 @@ jobs:
             CODE_SIGNING_REQUIRED=NO \
             CODE_SIGN_IDENTITY=""
 
-      - name: 署名なしIPAの作成
+      # 7️⃣ 未署名IPA生成
+      - name: Create unsigned IPA
         run: |
           mkdir -p build/ipa/Payload
           cp -R \
@@ -45,7 +61,8 @@ jobs:
           cd build/ipa
           zip -r SimpleToDo-unsigned.ipa Payload
 
-      - name: 署名なしIPAのartifactへのアップロード
+      # 8️⃣ アーティファクトとしてアップロード
+      - name: Upload unsigned IPA
         uses: actions/upload-artifact@v4
         with:
           name: SimpleToDo-unsigned-ipa
