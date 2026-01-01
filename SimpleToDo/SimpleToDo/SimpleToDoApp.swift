@@ -1,34 +1,41 @@
-import SwiftUI
-
 @main
 struct SimpleToDoApp: App {
 
     @StateObject private var model = ViewModel()
     @State private var showSplash = true
 
+    @Environment(\.scenePhase) var scenePhase
+
     var body: some Scene {
         WindowGroup {
-            ZStack {
-                // メイン画面（常に存在）
-                ContentView(model: model)
+            NavigationView {
+                ZStack {
+                    ContentView(model: model)
 
-                // Splash（アニメーション後に完全消去）
-                if showSplash {
-                    SplashView()
-                        .transition(.opacity)
-                        .zIndex(1)
+                    if showSplash {
+                        SplashView()
+                            .zIndex(1)
+                    }
                 }
+
+                SelectSomethingView()
             }
             .onAppear {
                 DispatchQueue.main.asyncAfter(deadline: .now() + 1.6) {
-                    withAnimation(.easeInOut(duration: 0.4)) {
-                        showSplash = false   // ← ここで View が破棄される
+                    withAnimation(.easeOut(duration: 0.3)) {
+                        showSplash = false
                     }
                 }
             }
         }
+        .onChange(of: scenePhase) { phase in
+            if phase == .background {
+                model.save()
+            }
+        }
     }
 }
+
 
 
 
