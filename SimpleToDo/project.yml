@@ -1,0 +1,15 @@
+name: SimpleToDo
+
+options:
+  bundleIdPrefix: com.example
+
+targets:
+  SimpleToDo:
+    type: application
+    platform: iOS
+    deploymentTarget: "15.0"
+    sources:
+      - path: SimpleToDo
+    settings:
+      base:
+        INFOPLIST_FILE: SimpleToDo/Info.plist
