@@ -3,7 +3,7 @@ import SwiftUI
 @main
 struct SimpleToDoApp: App {
 
-    @StateObject private var model = ViewModel()
+    //@StateObject private var model = ViewModel()
     @State private var showSplash = true
 
     @Environment(\.scenePhase) private var scenePhase

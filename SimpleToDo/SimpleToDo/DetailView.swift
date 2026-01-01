@@ -1,3 +1,4 @@
+#if false
 //
 // ContentView.swift
 // SimpleToDo
@@ -44,3 +45,4 @@ struct DetailView_Previews: PreviewProvider {
         DetailView(item: .constant(.example))
     }
 }
+#endif

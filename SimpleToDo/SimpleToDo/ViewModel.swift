@@ -1,3 +1,4 @@
+#if false
 //
 // ContentView.swift
 // SimpleToDo
@@ -74,3 +75,4 @@ class ViewModel: ObservableObject {
         items.removeAll(where: selected.contains)
     }
 }
+#endif

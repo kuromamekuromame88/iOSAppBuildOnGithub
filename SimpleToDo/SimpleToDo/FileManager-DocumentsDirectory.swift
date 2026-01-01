@@ -1,3 +1,4 @@
+#if false
 //
 // ContentView.swift
 // SimpleToDo
@@ -19,3 +20,4 @@ extension FileManager {
         return paths[0]
     }
 }
+#endif

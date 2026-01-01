@@ -1,3 +1,4 @@
+#if false
 //
 // ContentView.swift
 // SimpleToDo
@@ -33,3 +34,4 @@ struct SelectSomethingView_Previews: PreviewProvider {
         SelectSomethingView()
     }
 }
+#endif
