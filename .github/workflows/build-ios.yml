@@ -1,5 +1,4 @@
-name: Build iOS Archive and Unsigned IPA
-
+name: IOS向けの未署名IPAファイルの生成
 on:
   push:
     branches: [ "main" ]
