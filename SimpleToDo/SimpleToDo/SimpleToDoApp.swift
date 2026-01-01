@@ -2,21 +2,18 @@ import SwiftUI
 
 @main
 struct SimpleToDoApp: App {
+  @StateObject private var model = ViewModel()
+  @State private var showSplash = true
 
-    @StateObject private var model = ViewModel()
-    @State private var showSplash = true
+  var body: some Scene {
+    WindowGroup {
+      ZStack {
+        // 本体（最初から存在）
+          ContentView(model: model)
 
-    var body: some Scene {
-        WindowGroup {
-            ZStack {
-                // 本体（最初から存在）
-                ContentView(model: model)
-
-                // Splash（透明化してから完全に無効化）
-                SplashView()
-                    .opacity(showSplash ? 1 : 0)
-                    .allowsHitTesting(showSplash)
-                    .zIndex(1)
+          // Splash（表示状態を明示的に渡す）
+            SplashView(isVisible: showSplash)
+              .zIndex(1)
             }
             .onAppear {
                 DispatchQueue.main.asyncAfter(deadline: .now() + 1.6) {
@@ -28,6 +25,7 @@ struct SimpleToDoApp: App {
         }
     }
 }
+
 
 
 
