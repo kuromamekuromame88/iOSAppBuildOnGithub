@@ -19,6 +19,7 @@ targets:
 
     settings:
       base:
+        GENERATE_INFOPLIST_FILE: NO
         INFOPLIST_FILE: SimpleToDo/Info.plist
         PRODUCT_BUNDLE_IDENTIFIER: com.hackingwithswift.SimpleToDo
 
