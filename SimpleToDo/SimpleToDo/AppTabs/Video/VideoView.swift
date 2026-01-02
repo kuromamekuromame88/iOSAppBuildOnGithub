@@ -17,9 +17,8 @@ struct VideoView: View {
 
             // YouTube Player
             YouTubeWebView(videoID: videoID)
+                .edgesIgnoringSafeArea(.all)
                 .frame(height: 240)
-                .cornerRadius(12)
-                .padding(.horizontal)
 
             // 入力エリア
             VStack(spacing: 8) {
@@ -50,6 +49,5 @@ struct VideoView: View {
         let trimmed = inputID.trimmingCharacters(in: .whitespacesAndNewlines)
         guard !trimmed.isEmpty else { return }
         videoID = trimmed
-        inputID = ""
     }
 }
