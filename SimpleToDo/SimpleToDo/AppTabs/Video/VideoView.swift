@@ -18,7 +18,7 @@ struct VideoView: View {
             // YouTube Player
             YoutubeWebView(videoID: videoID)
                 .edgesIgnoringSafeArea(.horizontal)
-                .frame(height: 500)
+                .frame(height: 240)
 
             // 入力エリア
             VStack(spacing: 8) {

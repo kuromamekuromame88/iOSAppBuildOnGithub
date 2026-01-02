@@ -22,9 +22,9 @@ struct YoutubeWebView: UIViewRepresentable {
 
         let webView = WKWebView(frame: .zero, configuration: config)
 
-        webView.scrollView.isScrollEnabled = false
+        webView.scrollView.isScrollEnabled = true
         webView.isOpaque = false
-        webView.backgroundColor = .black
+        webView.backgroundColor = .white
 
         // 初回ロード
         context.coordinator.lastVideoID = videoID
