@@ -1,30 +1,55 @@
 import SwiftUI
+import WebKit
 
+// =======================
+// Video View
+// =======================
 struct VideoView: View {
+
+    // 現在再生中の動画ID
+    @State private var videoID: String = "dQw4w9WgXcQ"
+
+    // 入力用
+    @State private var inputID: String = ""
+
     var body: some View {
-        VStack(spacing: 24) {
+        VStack(spacing: 12) {
 
+            // YouTube Player
+            YouTubeWebView(videoID: videoID)
+                .frame(height: 240)
+                .cornerRadius(12)
+                .padding(.horizontal)
+
+            // 入力エリア
             VStack(spacing: 8) {
-                Image(systemName: "play.rectangle.fill")
-                    .font(.system(size: 64))
-                Text("Video")
-                    .font(.largeTitle)
-                    .bold()
-            }
 
-            VStack(spacing: 12) {
-                Text("YouTube / Video Player")
-                    .font(.headline)
-
-                Text("iframe + WKWebView で実装予定")
+                Text("YouTube Video ID")
+                    .font(.caption)
                     .foregroundColor(.secondary)
+
+                TextField("例: dQw4w9WgXcQ", text: $inputID)
+                    .textFieldStyle(RoundedBorderTextFieldStyle())
+                    .autocapitalization(.none)
+                    .disableAutocorrection(true)
+
+                Button(action: applyVideoID) {
+                    Text("動画を切り替える")
+                        .frame(maxWidth: .infinity)
+                }
+                .buttonStyle(.borderedProminent)
             }
+            .padding()
 
             Spacer()
-
-            Text("Coming Soon")
-                .foregroundColor(.secondary)
         }
-        .padding()
+        .navigationTitle("Video")
+    }
+
+    private func applyVideoID() {
+        let trimmed = inputID.trimmingCharacters(in: .whitespacesAndNewlines)
+        guard !trimmed.isEmpty else { return }
+        videoID = trimmed
+        inputID = ""
     }
 }

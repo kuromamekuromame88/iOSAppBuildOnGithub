@@ -34,6 +34,12 @@
 			fileRef = ABCDEF12345602010B000000 /* VideoView.swift */;
 		};
 
+		ABCDEF12345602020A000000 /*YouTubeWebView.swift in Sources*/ = {
+			isa = PBXBuildFile;
+			fileRef = ABCDEF12345602020B000000 /* YouTubeWebView.swift */;
+		};
+
+
 		ABCDEF12345603010A000000 /*VoiceView.swift in Sources*/ = {
 			isa = PBXBuildFile;
 			fileRef = ABCDEF12345603010B000000 /* VoiceView.swift */;
@@ -61,12 +67,21 @@
 			sourceTree = "<group>";
 		};
 
+
 		ABCDEF12345602010B000000 /*VideoView.swift*/ = {
 			isa = PBXFileReference;
 			lastKnownFileType = sourcecode.swift;
 			path = VideoView.swift;
 			sourceTree = "<group>";
 		};
+
+		ABCDEF12345602020B000000 /*YouTubeWebView.swift*/ = {
+			isa = PBXFileReference;
+			lastKnownFileType = sourcecode.swift;
+			path = YouTubeWebView.swift;
+			sourceTree = "<group>";
+		};
+
 
 		ABCDEF12345603010B000000 /*VoiceView.swift*/ = {
 			isa = PBXFileReference;
@@ -157,6 +172,7 @@
 			isa = PBXGroup;
 			children = (
 				ABCDEF12345602010B000000 /*VideoView.swift*/,
+				ABCDEF12345602020B000000 /*YouTubeWebView.swift*/,
 			);
 			path = "Video";
 			sourceTree = "<group>";
@@ -273,7 +289,10 @@
 				AD975CDF28253BE00042EAE4 /* ToDoItem+Preview.swift in Sources */,
 
 				ABCDEF12345601010A000000 /*ChatView.swift in Sources*/,
+
 				ABCDEF12345602010A000000 /*VideoView.swift in Sources*/,
+				ABCDEF12345602020A000000 /*YouTubeWebView.swift in Sources*/,
+
 				ABCDEF12345603010A000000 /*VoiceView.swift in Sources*/,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
