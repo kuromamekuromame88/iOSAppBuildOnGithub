@@ -16,8 +16,8 @@ struct VideoView: View {
         VStack(spacing: 12) {
 
             // YouTube Player
-            YouTubeWebView(videoID: videoID)
-                //.edgesIgnoringSafeArea(.all)
+            YoutubeWebView(videoID: videoID)
+                .edgesIgnoringSafeArea(.horizontal)
                 .frame(height: 240)
 
             // 入力エリア
