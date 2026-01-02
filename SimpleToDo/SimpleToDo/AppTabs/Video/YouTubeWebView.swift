@@ -34,6 +34,7 @@ struct YoutubeWebView: UIViewRepresentable {
     private func loadVideo(in webView: WKWebView) {
         var components = URLComponents(string: baseURL)
         components?.queryItems = [
+            URLQueryItem(name: "phone", value: true)
             URLQueryItem(name: "url", value: videoID)
         ]
 
