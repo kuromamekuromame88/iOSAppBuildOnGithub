@@ -1,4 +1,3 @@
-
 import WebKit
 
 final class WebViewStore: ObservableObject {
@@ -11,9 +10,8 @@ final class WebViewStore: ObservableObject {
         config.mediaTypesRequiringUserActionForPlayback = []
 
         let webView = WKWebView(frame: .zero, configuration: config)
-        webView.scrollView.isScrollEnabled = true
         webView.isOpaque = false
-        webView.backgroundColor = .white
+        webView.backgroundColor = .black
 
         if let url = URL(string: "https://tool-webs.onrender.com/youtube?phone=true") {
             webView.load(URLRequest(url: url))
