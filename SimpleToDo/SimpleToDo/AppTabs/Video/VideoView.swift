@@ -2,7 +2,7 @@ import SwiftUI
 import WebKit
 
 /// WebViewを生存させるためのストア
-final class WebViewStore: ObservableObject {
+/*final class WebViewStore: ObservableObject {
 
     let webView: WKWebView
 
@@ -25,7 +25,7 @@ final class WebViewStore: ObservableObject {
 
         self.webView = webView
     }
-}
+}*/
 
 struct VideoView: View {
 

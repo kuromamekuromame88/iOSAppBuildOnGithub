@@ -1,4 +1,4 @@
-#if false
+
 import WebKit
 
 final class WebViewStore: ObservableObject {
@@ -22,4 +22,3 @@ final class WebViewStore: ObservableObject {
         self.webView = webView
     }
 }
-#endif
