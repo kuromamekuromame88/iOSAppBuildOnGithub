@@ -4,6 +4,8 @@ struct ContentView: View {
 
     @State private var selectedTab: AppTab = .chat
 
+    @StateObject private var webViewStore = WebViewStore()
+
     var body: some View {
         TabView(selection: $selectedTab) {
 

@@ -11,7 +11,6 @@ struct YoutubeWebView: UIViewRepresentable {
     }
 
     func updateUIView(_ uiView: WKWebView, context: Context) {
-        // 何もしない
-        // ※ ここで load() するとタブ切替時に再生が止まる
+        //再ロード禁止
     }
 }
