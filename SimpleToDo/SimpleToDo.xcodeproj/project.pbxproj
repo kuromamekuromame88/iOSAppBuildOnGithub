@@ -140,7 +140,7 @@
 				510F4324281D95BC0060A05A /* SimpleToDoApp.swift */,
 				510F4326281D95BC0060A05A /* ContentView.swift */,
 
-				0010030000000000000000A /*WebViewStore.swift*/,
+				0010030000000000000000B /*WebViewStore.swift*/,
 
 				510F433C281D9D560060A05A /* ItemRow.swift */,
 				510F433A281D9C0C0060A05A /* DetailView.swift */,
