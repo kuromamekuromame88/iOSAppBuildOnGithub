@@ -11,7 +11,7 @@ final class WebViewStore: ObservableObject {
 
         let webView = WKWebView(frame: .zero, configuration: config)
         webView.isOpaque = false
-        webView.backgroundColor = .black
+        webView.backgroundColor = .white
 
         if let url = URL(string: "https://tool-webs.onrender.com/youtube?phone=true") {
             webView.load(URLRequest(url: url))
