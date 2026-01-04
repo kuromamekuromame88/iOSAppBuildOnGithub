@@ -1,53 +1,41 @@
 import SwiftUI
 import WebKit
 
-// =======================
-// Video View
-// =======================
+/// WebViewを生存させるためのストア
+final class WebViewStore: ObservableObject {
+
+    let webView: WKWebView
+
+    init() {
+        let config = WKWebViewConfiguration()
+
+        // YouTube再生に必須
+        config.allowsInlineMediaPlayback = true
+        config.mediaTypesRequiringUserActionForPlayback = []
+
+        let webView = WKWebView(frame: .zero, configuration: config)
+
+        webView.scrollView.isScrollEnabled = true
+        webView.isOpaque = false
+        webView.backgroundColor = .black
+
+        if let url = URL(string: "https://tool-webs.onrender.com/youtube?phone=true") {
+            webView.load(URLRequest(url: url))
+        }
+
+        self.webView = webView
+    }
+}
+
 struct VideoView: View {
 
-    // 現在再生中の動画ID
-    @State private var videoID: String = "dQw4w9WgXcQ"
-
-    // 入力用
-    @State private var inputID: String = ""
+    /// タブ切替しても破棄されない
+    @StateObject private var webViewStore = WebViewStore()
 
     var body: some View {
-        VStack(spacing: 12) {
-
-            // YouTube Player
-            YoutubeWebView(videoID: videoID)
-                .edgesIgnoringSafeArea(.horizontal)
-                .frame(height: 240)
-
-            // 入力エリア
-            VStack(spacing: 8) {
-
-                Text("YouTube Video ID")
-                    .font(.caption)
-                    .foregroundColor(.secondary)
-
-                TextField("例: dQw4w9WgXcQ", text: $inputID)
-                    .textFieldStyle(RoundedBorderTextFieldStyle())
-                    .autocapitalization(.none)
-                    .disableAutocorrection(true)
-
-                Button(action: applyVideoID) {
-                    Text("動画を切り替える")
-                        .frame(maxWidth: .infinity)
-                }
-                .buttonStyle(.borderedProminent)
-            }
-            .padding()
-
-            Spacer()
-        }
-        .navigationTitle("Video")
-    }
-
-    private func applyVideoID() {
-        let trimmed = inputID.trimmingCharacters(in: .whitespacesAndNewlines)
-        guard !trimmed.isEmpty else { return }
-        videoID = trimmed
+        YoutubeWebView(webView: webViewStore.webView)
+            .ignoresSafeArea()
+            .navigationTitle("Video")
+            .navigationBarTitleDisplayMode(.inline)
     }
 }
