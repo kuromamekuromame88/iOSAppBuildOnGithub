@@ -21,7 +21,8 @@ targets:
       base:
         GENERATE_INFOPLIST_FILE: NO
         INFOPLIST_FILE: SimpleToDo/Info.plist
-        PRODUCT_BUNDLE_IDENTIFIER: com.hackingwithswift.SimpleToDo
+        #元identifier: com.hackingwithswift.SimpleToDo
+        PRODUCT_BUNDLE_IDENTIFIER: jp.taisei.MyApp
 
         # 👇 重要：未署名前提
         CODE_SIGNING_ALLOWED: NO
