@@ -2,7 +2,8 @@ name: SimpleToDo
 
 options:
   deploymentTarget:
-    iOS: '15.0'
+    # 元iOS: '15.0'
+    iOS: '26.0'
 
 targets:
   SimpleToDo:
