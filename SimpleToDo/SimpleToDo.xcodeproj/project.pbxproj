@@ -221,9 +221,9 @@
 
 		ABCDEF123456040000000000 /*MoneyManagerフォルダ*/ = {
 			isa = PBXGroup;
-			children = {
-				ABCDEF12345604010B000000 /*MoneyManagerView.swift*/;
-			};
+			children = (
+				ABCDEF12345604010B000000 /*MoneyManagerView.swift*/,
+			);
 			path = "MoneyManager";
 			sourceTree = "<group>";
 		};
