@@ -51,6 +51,11 @@
 			isa = PBXBuildFile;
 			fileRef = ABCDEF12345603010B000000 /* VoiceView.swift */;
 		};
+
+		ABCDEF12345604010A000000 /*MoneyManagerView.swift in Sources*/ = {
+			isa = PBXBuildFile;
+			fileRef = ABCDEF12345604010B000000 /* MoneyManagerView.swift */;
+		};
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -103,6 +108,13 @@
 			isa = PBXFileReference;
 			lastKnownFileType = sourcecode.swift;
 			path = VoiceView.swift;
+			sourceTree = "<group>";
+		};
+
+		ABCDEF12345604010B000000 /*MoneyManagerView.swift*/ = {
+			isa = PBXFileReference;
+			lastKnownFileType = sourcecode.swift;
+			path = MoneyManagerView.swift;
 			sourceTree = "<group>";
 		};
 /* End PBXFileReference section */
@@ -173,6 +185,7 @@
 				ABCDEF123456010000000000 /*Chatフォルダ*/,
 				ABCDEF123456020000000000 /*Videoフォルダ*/,
 				ABCDEF123456030000000000 /*Voiceフォルダ*/,
+				ABCDEF123456040000000000 /*MoneyManagerフォルダ*/
 			);
 			path = "AppTabs";
 			sourceTree = "<group>";
@@ -203,6 +216,15 @@
 				ABCDEF12345603010B000000 /*VoiceView.swift*/,
 			);
 			path = "Voice";
+			sourceTree = "<group>";
+		};
+
+		ABCDEF123456040000000000 /*MoneyManagerフォルダ*/ = {
+			isa = PBXGroup;
+			children = {
+				ABCDEF12345604010B000000 /*MoneyManagerView.swift*/;
+			};
+			path = "MoneyManager";
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -316,6 +338,8 @@
 				ABCDEF12345602020A000000 /*YouTubeWebView.swift in Sources*/,
 
 				ABCDEF12345603010A000000 /*VoiceView.swift in Sources*/,
+
+				ABCDEF12345604010A000000 /*MoneyManagerView.swift in Sources*/,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -457,7 +481,7 @@
 					"@executable_path/Frameworks",
 				);
 				MARKETING_VERSION = 1.0;
-				PRODUCT_BUNDLE_IDENTIFIER = com.hackingwithswift.SimpleToDo;
+				PRODUCT_BUNDLE_IDENTIFIER = jp.taisei.MyApp/*com.hackingwithswift.SimpleToDo*/;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_EMIT_LOC_STRINGS = YES;
 				SWIFT_VERSION = 5.0;
