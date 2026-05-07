@@ -185,7 +185,7 @@
 				ABCDEF123456010000000000 /*Chatフォルダ*/,
 				ABCDEF123456020000000000 /*Videoフォルダ*/,
 				ABCDEF123456030000000000 /*Voiceフォルダ*/,
-				ABCDEF123456040000000000 /*MoneyManagerフォルダ*/
+				ABCDEF123456040000000000 /*MoneyManagerフォルダ*/,
 			);
 			path = "AppTabs";
 			sourceTree = "<group>";
