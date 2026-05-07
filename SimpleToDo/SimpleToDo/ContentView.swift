@@ -10,6 +10,10 @@ struct ContentView: View {
     var body: some View {
         TabView(selection: $selectedTab) {
 
+            MoneyManagerView()
+                .tabItem {
+                    Label("MoneyManager", systemImage: "tray.full.fill")
+                }
             ChatView()
                 .tabItem {
                     Label("Chat", systemImage: "message")
